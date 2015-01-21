@@ -3,7 +3,7 @@ package arduinoswitch;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import panamahitek.Arduino.PanamaHitek_Arduino;
 
 /**
@@ -21,9 +21,13 @@ public class Window extends javax.swing.JFrame {
     Controls c = new Controls();
 
     public Window() {
+
         initComponents();
-//Se inicia la conexión con Arduino para transmisión de datos
-        getPorts();
+
+            getPorts();
+      
+
+            //Se inicia la conexión con Arduino para transmisión de datos
     }
 
     public void getPorts() {
@@ -270,11 +274,11 @@ public class Window extends javax.swing.JFrame {
 
         getPorts();
 
+
     }//GEN-LAST:event_jButtonRefreshActionPerformed
 
     private void jLabelPHMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPHMouseMoved
-    
-        
+
         //
     }//GEN-LAST:event_jLabelPHMouseMoved
 
