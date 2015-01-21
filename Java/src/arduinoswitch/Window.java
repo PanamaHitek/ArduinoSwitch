@@ -1,9 +1,9 @@
 package arduinoswitch;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import panamahitek.Arduino.PanamaHitek_Arduino;
 
 /**
@@ -24,10 +24,9 @@ public class Window extends javax.swing.JFrame {
 
         initComponents();
 
-            getPorts();
-      
+        getPorts();
 
-            //Se inicia la conexión con Arduino para transmisión de datos
+        //Se inicia la conexión con Arduino para transmisión de datos
     }
 
     public void getPorts() {
@@ -63,6 +62,11 @@ public class Window extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jPanel1MouseMoved(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -173,6 +177,11 @@ public class Window extends javax.swing.JFrame {
                 jLabelPHMouseMoved(evt);
             }
         });
+        jLabelPH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelPHMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -278,9 +287,18 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRefreshActionPerformed
 
     private void jLabelPHMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPHMouseMoved
-
-        //
+        jLabelPH.setForeground(new Color(255, 204, 51));
     }//GEN-LAST:event_jLabelPHMouseMoved
+
+    private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
+        jLabelPH.setForeground(Color.white);
+    }//GEN-LAST:event_jPanel1MouseMoved
+
+    private void jLabelPHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPHMouseClicked
+       Acerca a = new Acerca();
+       a.setVisible(true);
+     a.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jLabelPHMouseClicked
 
     /**
      * @param args the command line arguments
