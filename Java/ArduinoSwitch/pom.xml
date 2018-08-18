@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.github.PanamaHitek</groupId>
             <artifactId>PanamaHitek_Arduino</artifactId>
-            <version>2.7.3</version>
+            <version>3.0.0</version>
         </dependency>  
         
         <dependency>
@@ -44,10 +44,10 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
-
     
-    <build>	
-        <plugins>
+     <build>
+        <finalName>ArduinoSwitch</finalName>
+        <plugins>        
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-eclipse-plugin</artifactId>
@@ -56,54 +56,43 @@
                     <downloadSources>true</downloadSources>
                     <downloadJavadocs>false</downloadJavadocs>
                 </configuration>
-            </plugin>
+            </plugin>           
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
-            </plugin>
+            </plugin>    
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/log4j.properties</exclude>
-                    </excludes>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>            
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+           
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
                             <mainClass>com.panamahitek.arduinoswitch.ArduinoSwitch</mainClass>
-                            <classpathPrefix>dependency-jars/</classpathPrefix>
                         </manifest>
                     </archive>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.5.1</version>
                 <executions>
                     <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
+                        <id>make-assembly</id>
+                        <phase>package</phase> 
                         <goals>
-                            <goal>copy-dependencies</goal>
+                            <goal>single</goal>
                         </goals>
-                        <configuration>
-                            <includeScope>runtime</includeScope>
-                            <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
-    </build>
-    
+    </build> 
   
 </project>
 
